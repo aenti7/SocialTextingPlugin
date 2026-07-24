@@ -20,30 +20,38 @@ public class STCommand {
         String finalMessage;
 
         if ("p".equals(mode)) {
+            // Режим P: оскорбление
             if ("rus".equals(language)) {
-                finalMessage = "§4§lST§r: " +
+                finalMessage = "|||||||||| §4§lST§r: " +
                         "§l" + senderName + "§r обозвал " +
                         "§l" + targetPlayer + "§r как " +
                         "\"" + argument + "\". " +
-                        "Азкабан проверяет… §4§lДЕПОРТИРОВАТЬ В АЗКАБАН!!!§r";
+                        "Азкабан проверяет данное оскорбление… " +
+                        "§4§lДЕПОРТИРОВАТЬ В АЗКАБАН!!!§r " +
+                        "ST работает в штатном режиме! ||||||||||";
             } else {
-                finalMessage = "§4§lST§r: " +
+                finalMessage = "|||||||||| §4§lST§r: " +
                         "§l" + senderName + "§r called " +
                         "§l" + targetPlayer + "§r a \"" + argument + "\". " +
-                        "Azkaban is checking… §4§lDEPORT TO AZKABAN!!!§r";
+                        "Azkaban is checking… " +
+                        "§4§lDEPORT TO AZKABAN!!!§r " +
+                        "ST operates normally! ||||||||||";
             }
             Bukkit.broadcastMessage(finalMessage);
             return true;
 
         } else if ("m".equals(mode)) {
             String displayText;
+
             if (targetPlayer.equalsIgnoreCase(senderName)) {
+                // Свой ник: аргумент — это просто текст
                 if ("rus".equals(language)) {
                     displayText = "сообщение «" + argument + "»";
                 } else {
                     displayText = "message \"" + argument + "\"";
                 }
             } else {
+                // Чужой ник: аргумент должен быть натуральным числом
                 try {
                     int number = Integer.parseInt(argument);
                     if (number <= 0) throw new NumberFormatException();
@@ -58,23 +66,28 @@ public class STCommand {
                 }
             }
 
+            String reason = argument;
+
             if ("rus".equals(language)) {
-                finalMessage = "§4§lST§r: " +
+                finalMessage = "|||||||||| §4§lST§r: " +
                         "Сообщение игрока " +
                         "§l" + targetPlayer + "§r было распознано как " +
-                        "§l" + argument + "§r (" + displayText + "). " +
-                        "Автор уже депортирован в Азкабан.";
+                        "§l" + reason + "§r (" + displayText + "). " +
+                        "Не волнуйтесь, автор такого контента уже был депортирован с сервера в Азкабан для отбывания срока за свои слова. " +
+                        "ST работает в штатном режиме! ||||||||||";
             } else {
-                finalMessage = "§4§lST§r: " +
+                finalMessage = "|||||||||| §4§lST§r: " +
                         "§l" + targetPlayer + "§r's message was recognised as " +
-                        "§l" + argument + "§r (" + displayText + "). " +
-                        "Author deported to Azkaban.";
+                        "§l" + reason + "§r (" + displayText + "). " +
+                        "Don't worry, the author of this content has already been deported from the server to Azkaban to cancel their terms of service. " +
+                        "ST operates normally! ||||||||||";
             }
+
             Bukkit.broadcastMessage(finalMessage);
             return true;
 
         } else {
-            commandSender.sendMessage("Первый аргумент должен быть 'p' или 'm'.");
+            commandSender.sendMessage("Первый аргумент должен быть 'p' (обзывательство) или 'm' (контент).");
             return true;
         }
     }
