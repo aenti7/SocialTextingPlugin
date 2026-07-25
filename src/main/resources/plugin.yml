@@ -1,8 +1,9 @@
 name: SocialTexting
 version: 1.0
 main: com.example.st.SocialTextingPlugin
-api-version: '1.16'
+api-version: '1.21'
 commands:
   st:
     description: Система сообщений ST
     usage: /st
+
