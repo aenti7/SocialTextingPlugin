@@ -13,6 +13,10 @@ public class SocialTextingPlugin extends JavaPlugin {
         saveDefaultConfig();
         getLogger().info("SocialTexting включён!");
     }
+    
+    public static Main getInstance() {
+        return instance;
+    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
