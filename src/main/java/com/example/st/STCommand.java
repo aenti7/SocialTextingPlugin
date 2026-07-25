@@ -6,7 +6,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import java.util.List;
 
 // Импортируй сюда свой главный класс вместо Main, если он называется иначе!
-import com.example.st.Main; 
+import com.example.st.SocialTextingPlugin; 
 
 public class STCommand {
 
@@ -45,7 +45,7 @@ public class STCommand {
 
         } else if ("m".equals(mode)) {
             String displayText;
-            FileConfiguration config = Main.getInstance().getConfig(); // Получаем конфиг
+            FileConfiguration config = SocialTextingPlugin.getInstance().getConfig(); // Получаем конфиг
 
             if (targetPlayer.equalsIgnoreCase(senderName)) {
                 // Если ник совпадает с твоим: аргумент — это текст сообщения
@@ -95,5 +95,8 @@ public class STCommand {
         }
     }
 }
+
+
+
 
 
