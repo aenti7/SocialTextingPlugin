@@ -6,15 +6,16 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class SocialTextingPlugin extends JavaPlugin {
+    private static SocialTextingPlugin instance;
 
     @Override
     public void onEnable() {
-        instance = this; // запоминаем себя
+        instance = this;
         saveDefaultConfig();
-        getLogger().info("SocialTexting включён!");
+        getLogger().info("Плагин SocialTexting включён! Конфиг готов.");
     }
-    
-    public static Main getInstance() {
+
+    public static SocialTextingPlugin getInstance() {
         return instance;
     }
 
@@ -32,7 +33,7 @@ public class SocialTextingPlugin extends JavaPlugin {
             player.sendMessage("Режим P (оскорбление):");
             player.sendMessage("  /st p [rus/eng] [ник] [имя]");
             player.sendMessage("");
-            player.sendMessage("Режим M (старый):");
+            player.sendMessage("Режим M (контент):");
             player.sendMessage("  /st m [rus/eng] [ник] [причина] [сообщение/номер]");
             return true;
         }
